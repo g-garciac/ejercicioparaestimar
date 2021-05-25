@@ -43,6 +43,7 @@
                 <th>
                     @Html.DisplayNameFor(m => ProductoPedidoVmNull.Importe)
                 </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -63,6 +64,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => producto.Importe)
+                    </td>
+                    <td>
+                        @Html.ActionLink("X", "Eliminar", new { id = producto.Id })
                     </td>
                 </tr>
             }

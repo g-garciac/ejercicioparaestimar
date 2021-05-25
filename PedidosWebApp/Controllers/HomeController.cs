@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PedidosWebApp.Models;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace PedidosWebApp.Controllers
 {
@@ -58,6 +55,14 @@ namespace PedidosWebApp.Controllers
             }
             else
                 existe.Cantidad += model.CantidadAgregar;
+            return View(nameof(Index), PedidoModel);
+        }
+
+        public IActionResult Eliminar(string id)
+        {
+            var existente = PedidoModel.Productos.FirstOrDefault(p => p.Id.Equals(id));
+            if (existente != null)
+                PedidoModel.Productos.Remove(existente);
             return View(nameof(Index), PedidoModel);
         }
     }
